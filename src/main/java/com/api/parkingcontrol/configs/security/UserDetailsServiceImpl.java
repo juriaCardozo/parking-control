@@ -1,5 +1,6 @@
 package com.api.parkingcontrol.configs.security;
 
+import com.api.parkingcontrol.models.UserModel;
 import com.api.parkingcontrol.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
+        UserModel userModel = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+        return userModel;
     }
 }
