@@ -17,6 +17,6 @@ public class ParkingControlApplication {
 
 	@GetMapping("/")
 	public String index(){
-		return "Eduardo gostoso";
+		return "Teste";
 	}
 }
